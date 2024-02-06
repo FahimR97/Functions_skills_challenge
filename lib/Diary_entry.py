@@ -5,6 +5,7 @@ class DiaryEntry:
         #   contents: string
         self.title = title
         self.contents = contents
+        self.current_position = 0
 
     def format(self):
         # Returns:
@@ -16,9 +17,9 @@ class DiaryEntry:
     def count_words(self):
         # Returns:
         #   int: the number of words in the diary entry
-        title = len(self.title.split())
-        content = len(self.contents.split())
-        return title + content
+        mytitle = len(self.title.split())
+        mycontent = len(self.contents.split())
+        return mytitle + mycontent
 
     def reading_time(self, wpm):
         # Parameters:
@@ -27,7 +28,8 @@ class DiaryEntry:
         # Returns:
         #   int: an estimate of the reading time in minutes for the contents at
         #        the given wpm.
-        pass
+        result = len(self.contents.split()) / wpm
+        return f"Your reading time is {result} min(s)"
 
     def reading_chunk(self, wpm, minutes):
         # Parameters
